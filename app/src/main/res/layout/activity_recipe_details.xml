@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".RecipeDetailsActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainCard"
+            android:layout_width="375dp"
+            android:layout_height="310dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginVertical="50dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:outlineAmbientShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/recipeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/callos"
+                    tools:srcCompat="@drawable/callos" />
+
+                <TextView
+                    android:id="@+id/recipeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/recipeImage"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:maxLines="1"
+                    android:text="Spanish Callos"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/clock"
+                    android:layout_width="44dp"
+                    android:layout_height="38dp"
+
+                    android:layout_alignBottom="@+id/recipeTitle"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginBottom="-40dp"
+                    app:srcCompat="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/timeNeeded"
+                    android:layout_width="333dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/recipeTitle"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="57dp"
+                    android:layout_marginBottom="-34dp"
+                    android:text="55 minutes"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/cal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/recipeTitle"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="57dp"
+                    android:layout_marginTop="80dp"
+                    android:fontFamily="sans-serif"
+                    android:text="945 kcal"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:id="@+id/calImage"
+                    android:layout_width="26dp"
+                    android:layout_height="33dp"
+                    android:layout_below="@+id/recipeTitle"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="79dp"
+                    app:srcCompat="@drawable/kcal" />
+
+                <ImageView
+                    android:id="@+id/isVegan"
+                    android:layout_width="105dp"
+                    android:layout_height="79dp"
+                    android:layout_below="@+id/recipeTitle"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="272dp"
+                    android:layout_marginTop="33dp"
+                    app:srcCompat="@drawable/vegan" />
+
+                <TextView
+                    android:id="@+id/servings"
+
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/recipeTitle"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="57dp"
+                    android:layout_marginBottom="-70dp"
+                    android:text="5 - 6 servings"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:id="@+id/servingsImage"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/recipeTitle"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="-72dp"
+                    app:srcCompat="@drawable/dish" />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/instructions"
+            android:layout_width="375dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="0dp"
+            app:cardBackgroundColor="@color/verde_foodborne"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainCard">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/instructionsImage"
+                    android:layout_width="45dp"
+                    android:layout_marginTop="-1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:srcCompat="@drawable/instructions" />
+
+                <TextView
+                    android:id="@+id/instructionsTitle"
+                    android:layout_width="371dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginTop="-47dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Instructions"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/instructionsDetails"
+            android:layout_width="375dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginStart="18dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instructions">
+            <TextView
+                android:id="@+id/instructionsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="Teletubbies son. Teletubbies son. Tinky-Winky, Dipsy, La-la y Po. Son muñecos de colores. Lo echan en televisión, y a los niños y a los grandes nos alegran el corazón."
+                android:textColor="@color/black"
+                android:textSize="20dp">
+
+            </TextView>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
+
