@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="verde_foodborne">#79B343</color>
+    <color name="fat">#888DFE</color>
+    <color name="carbs">#F52685</color>
+    <color name="protein">#FFAD33</color>
 </resources>

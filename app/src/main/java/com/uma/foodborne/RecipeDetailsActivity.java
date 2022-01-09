@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,7 +28,7 @@ import okhttp3.Response;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
     final static String API_KEY = "9fe1d7086ba94d9c887a4cf647acf753";
-    int recipeID = 1;
+    int recipeID = 600;
     TextView instructionsText;
     String respuesta;
     ImageView isVegan;
@@ -35,6 +36,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     TextView recipeTitle;
     TextView timeNeeded;
     TextView servings;
+    TextView cal;
+    TextView protein;
+    TextView carbs;
+    TextView fat;
+    TextView ingredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         recipeTitle = findViewById(R.id.recipeTitle);
         timeNeeded = findViewById(R.id.timeNeeded);
         servings = findViewById(R.id.servings);
+        cal = findViewById(R.id.cal);
+        carbs = findViewById(R.id.carbs);
+        protein = findViewById(R.id.protein);
+        fat = findViewById(R.id.fat);
+        ingredients = findViewById(R.id.ingredientsInformation);
     }
 
     private void getRecipeDetails(int recipeID) {
@@ -83,10 +94,32 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                                 recipeTitle.setText(json.getString("title"));
                                 timeNeeded.setText(json.getInt("readyInMinutes") + " minutes");
                                 servings.setText(json.getInt("servings") + " servings");
-                                instructionsText.setText(json.getString("instructions"));
+                                String instructions = json.getString("instructions");
+                                if (instructions.equals("null")) {
+                                    instructionsText.setText("None");
+                                } else {
+                                    instructionsText.setText(instructions);
+                                }
+                                JSONObject nutrition = json.getJSONObject("nutrition");
+                                JSONArray nutrients = nutrition.getJSONArray("nutrients");
+                                cal.setText(nutrients.getJSONObject(0).getString("amount") + " kcal/100g");
+                                fat.setText("Fat: " + nutrients.getJSONObject(1).getString("amount") + "g (" + nutrients.getJSONObject(2).getString("amount") + "g saturated)");
+                                protein.setText("Protein: " + nutrients.getJSONObject(8).getString("amount") + "g");
+                                carbs.setText("Carbohydrates: " + nutrients.getJSONObject(3).getString("amount") + "g (" + nutrients.getJSONObject(5).getString("amount") + "g of sugar)");
+                                JSONArray ingredientsJSON = json.getJSONArray("extendedIngredients");
+                                StringBuilder sb = new StringBuilder();
+                                for (int i = 0; i < ingredientsJSON.length(); i++) {
+                                    sb.append("\n");
+                                    JSONObject ingredient = ingredientsJSON.getJSONObject(i);
+                                    sb.append(ingredient.getString("originalString"));
+                                    sb.append("\n");
+                                }
+                                ingredients.setText(sb.toString());
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+
                         }
                     });
                 }
