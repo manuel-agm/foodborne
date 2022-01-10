@@ -10,7 +10,7 @@ public class RecipeDetails {
     String image;
     String instructions;
     int time;
-    List<String> ingredients;
+    String ingredients;
 
     //GET Search Recipes by Nutrients
     int calories;
@@ -19,7 +19,7 @@ public class RecipeDetails {
     int fat;
 
     public RecipeDetails(boolean isVegan, int servings, String title, String image, String instructions,
-                         int time, List<String> ingredients, int calories, int carbs, int protein, int fat) {
+                         int time, String ingredients, int calories, int carbs, int protein, int fat) {
         this.isVegan = isVegan;
         this.servings = servings;
         this.title = title;
@@ -81,11 +81,11 @@ public class RecipeDetails {
         this.time = time;
     }
 
-    public List<String> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 

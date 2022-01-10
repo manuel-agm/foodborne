@@ -19,4 +19,5 @@
     <string name="dinner">Dinner</string>
     <string name="menuplanner">Menu Planner</string>
     <string name="success">Meal added successfully</string>
+    <string name="failed">Error</string>
 </resources>
