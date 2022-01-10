@@ -40,7 +40,8 @@
             <CalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:selectedWeekBackgroundColor="@color/verde_foodborne" />
 
         </androidx.cardview.widget.CardView>
 

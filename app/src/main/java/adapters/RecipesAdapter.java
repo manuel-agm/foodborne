@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import models.Recipe;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Create the basic adapter extending from RecyclerView.Adapter
@@ -23,30 +25,12 @@ import java.util.List;
 public class RecipesAdapter extends
         RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
 
-    // Provide a direct reference to each of the views within a data item
-    // Used to cache the views within the item layout for fast access
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
-        public TextView textName;
-        public TextView textDesc;
-        public ImageView imageRecipe;
-
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
-        public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
-            super(itemView);
-
-            textName = (TextView) itemView.findViewById(R.id.textName);
-            textDesc = (TextView) itemView.findViewById(R.id.textDesc);
-            imageRecipe = (ImageView) itemView.findViewById(R.id.imgRecipe);
-        }
-    }
     List<Recipe> recetas;
-    public RecipesAdapter(List<Recipe> recetas){
+    OnNoteListener mOnNoteListener;
+
+    public RecipesAdapter(List<Recipe> recetas, OnNoteListener onNoteListener){
         this.recetas = recetas;
+        this.mOnNoteListener = onNoteListener;
     }
 
     @NonNull
@@ -57,9 +41,8 @@ public class RecipesAdapter extends
 
         // Inflate the custom layout
         View contactView = inflater.inflate(R.layout.recycler_view_item, parent, false);
-
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
+        ViewHolder viewHolder = new ViewHolder(contactView, mOnNoteListener);
         return viewHolder;
     }
 
@@ -81,4 +64,66 @@ public class RecipesAdapter extends
     public int getItemCount() {
         return recetas.size();
     }
+
+    public int getRecetasId(int position) {
+        return recetas.get(position).getId();
+    }
+
+    public interface OnNoteListener {
+        void onNoteClick(int position);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Provide a direct reference to each of the views within a data item
+    // Used to cache the views within the item layout for fast access
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        // Your holder should contain a member variable
+        // for any view that will be set as you render a row
+        public TextView textName;
+        public TextView textDesc;
+        public ImageView imageRecipe;
+
+        OnNoteListener onNoteListener;
+
+        // We also create a constructor that accepts the entire item row
+        // and does the view lookups to find each subview
+        public ViewHolder(View itemView, OnNoteListener onNoteListener) {
+            // Stores the itemView in a public final member variable that can be used
+            // to access the context from any ViewHolder instance.
+            super(itemView);
+
+            textName = (TextView) itemView.findViewById(R.id.textName);
+            textDesc = (TextView) itemView.findViewById(R.id.textDesc);
+            imageRecipe = (ImageView) itemView.findViewById(R.id.imgRecipe);
+
+            this.onNoteListener = onNoteListener;
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int i = getAdapterPosition();
+            onNoteListener.onNoteClick(i);
+        }
+    }
+
 }

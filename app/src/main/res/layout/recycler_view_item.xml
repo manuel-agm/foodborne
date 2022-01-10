@@ -24,12 +24,14 @@
             android:id="@+id/textName"
             android:layout_width="305dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             tools:text="@tools:sample/lorem[3]" />
 
         <TextView
             android:id="@+id/textDesc"
             android:layout_width="305dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
             tools:text="@tools:sample/lorem[4]" />
 
         <View

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4CAF50"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -19,8 +19,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:background="#8BC34A"
+            android:layout_height="20dp"
+            android:background="@drawable/background"
             android:gravity="bottom"
             android:orientation="horizontal">
 
@@ -29,7 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="117dp"
-            android:background="#8BC34A"
+            android:background="#FFFFFF"
             android:orientation="vertical">
 
             <View
@@ -57,17 +57,20 @@
                     android:layout_height="70dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Introduzca para buscar"
+                    android:fontFamily="@font/lato"
+                    android:hint="@string/hint"
                     android:inputType="textPersonName" />
 
                 <Button
                     android:id="@+id/btnSearch"
+                    android:fontFamily="@font/lato_bold"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="69dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#009688"
+                    android:backgroundTint="@color/verde_foodborne"
                     android:foregroundTint="#8BC34A"
-                    android:text="Buscar"
+                    android:text="@string/search"
                     android:textColorHighlight="#4CAF50"
                     app:rippleColor="#FFFFFF" />
 
@@ -81,31 +84,35 @@
 
                 <CheckBox
                     android:id="@+id/checkVegetariano"
+                    android:fontFamily="@font/lato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Vegetariano" />
+                    android:text="@string/vegetarian" />
 
                 <CheckBox
                     android:id="@+id/checkVegano"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Vegano" />
+                    android:fontFamily="@font/lato"
+                    android:text="@string/vegan" />
 
                 <CheckBox
                     android:id="@+id/checkGluten"
+                    android:fontFamily="@font/lato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Sin Gluten" />
+                    android:text="@string/glutenfree" />
 
                 <CheckBox
                     android:id="@+id/checkLactosa"
+                    android:fontFamily="@font/lato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Sin Lactosa" />
+                    android:text="@string/nolactose" />
             </LinearLayout>
 
         </LinearLayout>
@@ -120,6 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="515dp"
                 tools:itemCount="50"
+
                 tools:listitem="@layout/recycler_view_item">
 
             </androidx.recyclerview.widget.RecyclerView>
@@ -145,39 +153,47 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Página 1/1"
+                    android:fontFamily="@font/lato"
+                    android:hint="@string/page11"
                     android:inputType="number" />
 
                 <Button
                     android:id="@+id/btnGo"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/lato_bold"
                     android:layout_width="402dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="#009688"
+                    android:backgroundTint="@color/verde_foodborne"
                     android:text="Go" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#8BC34A"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnPre"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="#009688"
-                    android:text="Previous" />
+                    android:fontFamily="@font/lato_bold"
+                    android:backgroundTint="@color/verde_foodborne"
+                    android:text="@string/previous" />
 
                 <Button
                     android:id="@+id/btnNext"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/lato_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="#009688"
-                    android:text="Next" />
+                    android:backgroundTint="@color/verde_foodborne"
+                    android:text="@string/next" />
 
             </LinearLayout>
         </LinearLayout>

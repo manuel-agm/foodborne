@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.ActionBar.LayoutParams;
 import android.os.StrictMode;
@@ -27,7 +29,7 @@ import models.Recipe;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements RecipesAdapter.OnNoteListener {
 
     private EditText txtSearch;
     private EditText txtPages;
@@ -79,20 +81,15 @@ public class MainActivity extends Activity {
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
 
         recyclerView = (RecyclerView) findViewById(R.id.recicler);
-        
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
-
             @Override
             public void onRefresh() {
-
                 offset = 0;
                 actualizarRecycler(actualMod, actualInformacion, offset);
                 swipeRefreshLayout.setRefreshing(false);
-
             }
-
         });
 
         btnPrev.setOnClickListener(new OnClickListener() {
@@ -181,13 +178,22 @@ public class MainActivity extends Activity {
             myToast.show();
             e.printStackTrace();
         }
+        
         // Create adapter passing in the sample user data
-        recipesAdapter = new RecipesAdapter(recipes);
+        recipesAdapter = new RecipesAdapter(recipes, this);
         // Attach the adapter to the recyclerview to populate items
         rvRecipes.setAdapter(recipesAdapter);
         // Set layout manager to position the items
         layoutManager = new LinearLayoutManager(this);
         rvRecipes.setLayoutManager(layoutManager);
         // That's all!
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        int id = recipesAdapter.getRecetasId(position);
+        Intent intent = new Intent(MainActivity.this, RecipeDetailsActivity.class);
+        intent.putExtra("id",id);
+        startActivity(intent);
     }
 }

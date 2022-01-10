@@ -23,7 +23,6 @@ import okhttp3.Response;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
     final static String API_KEY = "9fe1d7086ba94d9c887a4cf647acf753";
-    int recipeID = 601;
     TextView instructionsText;
     String respuesta;
     ImageView isVegan;
@@ -42,7 +41,16 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
         initElements();
-        getRecipeDetails(recipeID);
+        getRecipeDetails(getRecipeId());
+    }
+
+    private int getRecipeId() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            return extras.getInt("id");
+        } else {
+            return 0;
+        }
     }
 
     private void initElements() {

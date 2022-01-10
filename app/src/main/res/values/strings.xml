@@ -20,4 +20,13 @@
     <string name="menuplanner">Menu Planner</string>
     <string name="success">Meal added successfully</string>
     <string name="failed">Error</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="page11">Page 1/1</string>
+    <string name="hint">Search</string>
+    <string name="search">Search</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="vegan">Vegan</string>
+    <string name="glutenfree">Gluten Free</string>
+    <string name="nolactose">No Lactose</string>
 </resources>
