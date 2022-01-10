@@ -71,29 +71,29 @@ public class PlannerActivity extends AppCompatActivity {
                 meals.clear();
                 if (planning == null) {
                     meals.add(getString(R.string.breakfast)+ ": -");
-                    meals.add(getString(R.string.launch)+ ": -");
+                    meals.add(getString(R.string.lunch)+ ": -");
                     meals.add(getString(R.string.snack)+ ": -");
                     meals.add(getString(R.string.dinner)+ ": -");
                 } else {
-
+                    CountDownLatch cdl = new CountDownLatch(1);
                     if (planning[0] != null) {
 
-                        meals.add(getString(R.string.breakfast)+ ": " + planning[0]);
+                        meals.add(getString(R.string.breakfast)+ ": " + APIUtils.getRecipeNameById(Integer.parseInt(planning[0]), cdl));
                     } else {
                         meals.add(getString(R.string.breakfast)+ ": -");
                     }
                     if (planning[1] != null) {
-                        meals.add(getString(R.string.launch) + ": " + planning[1]);
+                        meals.add(getString(R.string.lunch) + ": " + APIUtils.getRecipeNameById(Integer.parseInt(planning[1]), cdl));
                     } else {
-                        meals.add(getString(R.string.launch)+ ": -");
+                        meals.add(getString(R.string.lunch)+ ": -");
                     }
                     if (planning[2] != null) {
-                        meals.add(getString(R.string.snack)+ ": " + planning[2]);
+                        meals.add(getString(R.string.snack)+ ": " + APIUtils.getRecipeNameById(Integer.parseInt(planning[2]), cdl));
                     } else {
                         meals.add(getString(R.string.snack)+ ": -");
                     }
                     if (planning[3] != null) {
-                        meals.add(getString(R.string.dinner) + ": "+ planning[3]);
+                        meals.add(getString(R.string.dinner) + ": "+ APIUtils.getRecipeNameById(Integer.parseInt(planning[3]), cdl));
                     } else {
                         meals.add(getString(R.string.dinner)+ ": -");
                     }

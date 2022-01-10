@@ -14,7 +14,7 @@
     <string name="sugar">sugar</string>
     <string name="saturated">saturated</string>
     <string name="breakfast">Breakfast</string>
-    <string name="launch">Launch</string>
+    <string name="lunch">Lunch</string>
     <string name="snack">Snack</string>
     <string name="dinner">Dinner</string>
     <string name="menuplanner">Menu Planner</string>
@@ -23,7 +23,7 @@
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <string name="page11">Page 1/1</string>
-    <string name="hint">Search</string>
+    <string name="hint">Search recipe...</string>
     <string name="search">Search</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="vegan">Vegan</string>

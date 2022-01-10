@@ -19,8 +19,10 @@ import okhttp3.ResponseBody;
 
 public class APIUtils {
     final static String API_KEY = "9fe1d7086ba94d9c887a4cf647acf753";
+
+    private static String name = "";
+
     public static String getRecipeNameById(int id, CountDownLatch cdl) {
-        String[] name = {""};
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://api.spoonacular.com/recipes/" + id + "/information?apiKey=" + API_KEY + "&includeNutrition=false")
@@ -29,6 +31,7 @@ public class APIUtils {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                cdl.countDown();
                 e.printStackTrace();
             }
             @Override
@@ -41,14 +44,20 @@ public class APIUtils {
                         String res = response.body().string();
                         try {
                             JSONObject json = new JSONObject(res);
-                            name[0] = ": " + json.getString("title");
+                            name = json.getString("title");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 }
+                cdl.countDown();
             }
         });
-        return name[0];
+        try {
+            cdl.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return name;
     }
 }

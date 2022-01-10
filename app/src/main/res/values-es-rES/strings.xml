@@ -14,11 +14,20 @@
     <string name="sugar">azúcar</string>
     <string name="saturated">saturadas</string>
     <string name="breakfast">Desayuno</string>
-    <string name="launch">Almuerzo</string>
+    <string name="lunch">Almuerzo</string>
     <string name="snack">Merienda</string>
     <string name="dinner">Cena</string>
     <string name="menuplanner">Planificador</string>
     <string name="desc">" a"</string>
     <string name="failed">Error</string>
     <string name="success">Comida añadida correctamente</string>
+    <string name="previous">Anterior</string>
+    <string name="next">Siguiente</string>
+    <string name="page11">Página 1/1</string>
+    <string name="hint">Buscar receta...</string>
+    <string name="search">Buscar</string>
+    <string name="vegetarian">Vegetariana</string>
+    <string name="vegan">Vegano</string>
+    <string name="glutenfree">Sin gluten</string>
+    <string name="nolactose">Sin lactosa</string>
 </resources>
