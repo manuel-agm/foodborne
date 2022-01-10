@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Foodborne</string>
+    <string name="desc">"  a"</string>
+    <string name="macronutrients">Macronutrients</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="servings">serving/s</string>
+    <string name="minutes">minute/s</string>
+    <string name="none">None</string>
+    <string name="kcal">kcal</string>
+    <string name="fat">Fat</string>
+    <string name="protein">Protein</string>
+    <string name="carbs">Carbohydrates</string>
+    <string name="sugar">sugar</string>
+    <string name="saturated">saturated</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="launch">Launch</string>
+    <string name="snack">Snack</string>
+    <string name="dinner">Dinner</string>
+    <string name="menuplanner">Menu Planner</string>
+    <string name="success">Meal added successfully</string>
+</resources>

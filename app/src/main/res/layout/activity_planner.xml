@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlannerActivity"
+    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tituloPlanner"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginStart="0dp"
+            app:cardBackgroundColor="@color/verde_foodborne">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="80dp"
+                android:text="@string/menuplanner"
+                android:fontFamily="@font/lato_black"
+                android:textColor="@color/white"
+                android:textSize="40dp">
+            </TextView>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </androidx.cardview.widget.CardView>
+
+        <ListView
+            android:id="@+id/meals"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:fontFamily="@font/lato_black"
+            android:minHeight="?android:attr/listPreferredItemHeight" />
+
+    </LinearLayout>
+
+
+</ScrollView>
