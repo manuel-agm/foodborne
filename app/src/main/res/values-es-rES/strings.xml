@@ -21,6 +21,7 @@
     <string name="desc">" a"</string>
     <string name="failed">Error</string>
     <string name="success">Comida añadida correctamente</string>
+    <string name="deleted">Comida borrada correctamente</string>
     <string name="previous">Anterior</string>
     <string name="next">Siguiente</string>
     <string name="page11">Página 1/1</string>
@@ -34,4 +35,9 @@
     <string name="subheaderplanner">Planificar tus comidas nunca ha sido tan fácil</string>
     <string name="startplanning">Empieza ya</string>
     <string name="goback">VOLVER</string>
+    <string name="validpagenumber">Inserte un número de página válido</string>
+    <string name="noresults">No se han encontrado resultados</string>
+    <string name="selectdate">Seleccione un día</string>
+    <string name="nomeal">No hay comida que borrar</string>
+    <string name="accept">Aceptar</string>
 </resources>

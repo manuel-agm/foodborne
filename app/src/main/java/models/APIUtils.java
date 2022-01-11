@@ -23,7 +23,7 @@ import okhttp3.ResponseBody;
 public class APIUtils {
     //final static String API_KEY = "9fe1d7086ba94d9c887a4cf647acf753"; // GOMEZ
     //final static String API_KEY = "01e611e7d4954ce39cd97fb5312e23cd"; // ROLDAN 2
-    public final static String API_KEY = "b8efe4ac504b4e66a294db52cbb7c152";
+    public final static String API_KEY = "a75a4d3064254a4ea532d178459e4b0e";
 
     private static String name = "";
     private static ArrayList<Recipe> recipesPlanner = new ArrayList<Recipe>();

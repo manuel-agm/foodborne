@@ -19,6 +19,7 @@
     <string name="dinner">Dinner</string>
     <string name="menuplanner">Menu Planner</string>
     <string name="success">Meal added successfully</string>
+    <string name="deleted">Meal deleted successfully</string>
     <string name="failed">Error</string>
     <string name="previous"> Previous </string>
     <string name="next">Next</string>
@@ -30,8 +31,12 @@
     <string name="glutenfree">Gluten Free</string>
     <string name="nolactose">No Lactose</string>
     <string name="goback">GO BACK</string>
-
     <string name="headerplanner">Don\'t know what to eat?</string>
-    <string name="subheaderplanner">Planning your meals is now easier than ever</string>
+    <string name="subheaderplanner">Planning your meals is now easier than ever!</string>
     <string name="startplanning">Start planning</string>
+    <string name="validpagenumber">Please insert a valid page number</string>
+    <string name="noresults">No results found</string>
+    <string name="selectdate">Select a date</string>
+    <string name="nomeal">There\'s no meal to delete</string>
+    <string name="accept">Accept</string>
 </resources>

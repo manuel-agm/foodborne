@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class PlannerActivity extends AppCompatActivity {
     private CalendarView calendar;
     private PlannerAdapter plannerAdapter;
     private LinearLayoutManager layoutManager;
+    Button goBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +65,11 @@ public class PlannerActivity extends AppCompatActivity {
         }
 
 
-        sql.insertRecipeIntoDay(41212, 0, "20220112");
+        /*sql.insertRecipeIntoDay(41212, 0, "20220112");
         sql.insertRecipeIntoDay(33312, 3, "20220111");
         //sql.deleteRecipeFromDay(0, "2022011");
         sql.deleteRecipeFromDay(2, "20220012");
-        actualizarRecycler("20220111");
+        actualizarRecycler("20220111");*/
         initElements();
     }
 
@@ -78,6 +80,14 @@ public class PlannerActivity extends AppCompatActivity {
         String dateText = df2.format(date);
         TextView txtDate = (TextView) findViewById(R.id.txtDate);
         txtDate.setText(dateText);
+        goBack = findViewById(R.id.goback);
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlannerActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
@@ -139,7 +149,7 @@ public class PlannerActivity extends AppCompatActivity {
             rvPlanner.setLayoutManager(layoutManager);
             rvPlanner.setVisibility(View.VISIBLE);
         } catch (Exception  e) {
-            Toast myToast = Toast.makeText(this, "No se han encontrado resultados", Toast.LENGTH_LONG);
+            Toast myToast = Toast.makeText(this, getString(R.string.noresults), Toast.LENGTH_LONG);
             myToast.show();
             e.printStackTrace();
         }

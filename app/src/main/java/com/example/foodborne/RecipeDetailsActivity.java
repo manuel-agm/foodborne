@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import models.APIUtils;
-import models.RecipeDetails;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -73,8 +72,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RecipeDetailsActivity.this, MainActivity.class);
-                startActivity(intent);
+                RecipeDetailsActivity.this.finish();
+                /*Intent intent = new Intent(RecipeDetailsActivity.this, MainActivity.class);
+                startActivity(intent);*/
             }
         });
     }

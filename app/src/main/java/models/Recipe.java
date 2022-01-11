@@ -90,7 +90,7 @@ public class Recipe {
         }
 
         if(recipes.size() == 0){
-            throw new IOException("No se han encontrado resultados");
+            throw new IOException(String.valueOf(R.string.noresults));
         }
 
         if(mode == MODE_SEARCH){

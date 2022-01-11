@@ -67,7 +67,6 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
             btnGo = (Button) findViewById(R.id.btnGoSel);
             txtPages = (EditText) findViewById(R.id.txtPagesSel);
 
-
             checkVegetariano = (CheckBox) findViewById(R.id.checkVegetarianoSel);
             checkVegano = (CheckBox) findViewById(R.id.checkVeganoSel);
             checkGluten = (CheckBox) findViewById(R.id.checkGlutenSel);
@@ -118,7 +117,7 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
                 @Override
                 public void onClick(View v) {
                     if((txtPages.getText() == null || txtPages.getText().toString() == "" || Integer.parseInt(txtPages.getHint().toString().split("/")[1]) < Integer.parseInt(txtPages.getText().toString()))){
-                        Toast.makeText(v.getContext(), "Introduzca número de página válido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), getString(R.string.validpagenumber), Toast.LENGTH_SHORT).show();
                     } else {
                         offset = Integer.parseInt(txtPages.getText().toString()) * NUM_RECETAS;
                         actualizarRecycler(actualMod, actualInformacion, offset);
@@ -157,9 +156,6 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
 
                         actualInformacion.substring(0, actualInformacion.lastIndexOf(','));
                     }
-
-                    Toast myToast = Toast.makeText( v.getContext(), "https://api.spoonacular.com/recipes/complexSearch?" + actualInformacion, Toast.LENGTH_SHORT);
-                    myToast.show();
                     offset = 0;
                     actualizarRecycler(actualMod, actualInformacion, offset);
 
@@ -187,7 +183,7 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
                 layoutManager = new LinearLayoutManager(this);
                 rvRecipes.setLayoutManager(layoutManager);
             } catch (Exception  e) {
-                Toast myToast = Toast.makeText(this, "No se han encontrado resultados", Toast.LENGTH_LONG);
+                Toast myToast = Toast.makeText(this, getString(R.string.noresults), Toast.LENGTH_LONG);
                 myToast.show();
                 e.printStackTrace();
             }

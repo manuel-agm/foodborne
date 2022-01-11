@@ -1,7 +1,9 @@
 package database;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -156,10 +158,22 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             if (result == -1) {
                 Toast.makeText(context, context.getString(R.string.failed), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(context, context.getString(R.string.success), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, context.getString(R.string.deleted), Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(context, context.getString(R.string.failed), Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder b = new AlertDialog.Builder(context);
+            b.setMessage(context.getString(R.string.nomeal));
+            b.setCancelable(true);
+            b.setPositiveButton(context.getString(R.string.accept),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    }
+            );
+            AlertDialog a = b.create();
+            a.show();
         }
     }
 }
