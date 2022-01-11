@@ -12,6 +12,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2022012"
+            android:visibility="gone" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/tituloPlanner"
             android:layout_width="match_parent"
@@ -45,12 +52,12 @@
 
         </androidx.cardview.widget.CardView>
 
-        <ListView
-            android:id="@+id/meals"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler2"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:fontFamily="@font/lato_black"
-            android:minHeight="?android:attr/listPreferredItemHeight" />
+            android:layout_height="match_parent"
+            tools:itemCount="6"
+            tools:listitem="@layout/recycler_view_item_1" />
 
     </LinearLayout>
 

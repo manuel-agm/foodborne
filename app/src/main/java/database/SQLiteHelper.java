@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 
 import com.example.foodborne.R;
 
+import java.util.Date;
+
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     private Context context;
@@ -37,7 +39,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        String createTable = "CREATE TABLE " + TABLE_NAME_DAY +
+        String createTable = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_DAY +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_DATE + " INTEGER, " +
                 COLUMN_BREAKFAST + " INTEGER, " +
@@ -73,6 +75,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public void insertRecipeIntoDay(int recipeID, int meal, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase dbSel = this.getReadableDatabase();
+
+        Cursor c = db.rawQuery("SELECT " + COLUMN_DATE + " FROM " + TABLE_NAME_DAY +
+                " WHERE " + COLUMN_DATE + " = ?", new String[] {date});
+
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_DATE,Integer.parseInt(date));
         switch(meal) {
@@ -89,11 +96,70 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 cv.put(COLUMN_DINNER,recipeID);
                 break;
         }
-        long result = db.insert(TABLE_NAME_DAY, null, cv);
+        long result = -1 ;
+        if(!c.moveToFirst()){
+            result = db.insert(TABLE_NAME_DAY, null, cv);
+        } else {
+            result = db.update(TABLE_NAME_DAY, cv, COLUMN_DATE + "= ?", new String[] {date});
+        }
         if (result == -1) {
             Toast.makeText(context, context.getString(R.string.failed), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, context.getString(R.string.success), Toast.LENGTH_SHORT).show();
+        }
+
+        c.close();
+        db.close();
+        dbSel.close();
+    }
+
+    public void deleteRecipeFromDay(int meal, String date) {
+        int nulls = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase dbSel = this.getReadableDatabase();
+
+        Cursor c = dbSel.rawQuery("SELECT " +  COLUMN_BREAKFAST + ", " + COLUMN_LAUNCH + ", " +
+                COLUMN_SNACK + ", " +  COLUMN_DINNER + " FROM " + TABLE_NAME_DAY + " WHERE " + COLUMN_DATE + " = ?", new String[] {date});
+
+        if(c.moveToFirst()){
+            for(int i = 0; i < 4; i++){
+                if(c.isNull(i)){
+                    if(i == meal){
+                        Toast.makeText(context, context.getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    nulls++;
+                }
+            }
+            int result;
+            if(nulls == 3){
+                result = db.delete(TABLE_NAME_DAY, COLUMN_DATE + "= ?", new String[] {date});
+            } else {
+                ContentValues cv = new ContentValues();
+                cv.put(COLUMN_DATE,Integer.parseInt(date));
+                switch(meal) {
+                    case 0:
+                        cv.put(COLUMN_BREAKFAST, (Integer) null);
+                        break;
+                    case 1:
+                        cv.put(COLUMN_LAUNCH,(Integer) null);
+                        break;
+                    case 2:
+                        cv.put(COLUMN_SNACK,(Integer) null);
+                        break;
+                    case 3:
+                        cv.put(COLUMN_DINNER,(Integer) null);
+                        break;
+                }
+                result = db.update(TABLE_NAME_DAY, cv, COLUMN_DATE + "= ?", new String[] {date});
+            }
+            if (result == -1) {
+                Toast.makeText(context, context.getString(R.string.failed), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, context.getString(R.string.success), Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(context, context.getString(R.string.failed), Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,9 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.foodborne.R;
 import models.Recipe;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 // Create the basic adapter extending from RecyclerView.Adapter
@@ -28,7 +25,8 @@ public class RecipesAdapter extends
     List<Recipe> recetas;
     OnNoteListener mOnNoteListener;
 
-    public RecipesAdapter(List<Recipe> recetas, OnNoteListener onNoteListener){
+    public RecipesAdapter(List<Recipe> recetas, OnNoteListener onNoteListener) throws IOException {
+        if(recetas == null) throw new IOException("No se han encontrado resultados");
         this.recetas = recetas;
         this.mOnNoteListener = onNoteListener;
     }

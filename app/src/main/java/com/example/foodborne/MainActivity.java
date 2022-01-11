@@ -1,5 +1,6 @@
 package com.example.foodborne;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
@@ -9,14 +10,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
-import android.app.ActionBar.LayoutParams;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,7 +32,6 @@ import com.squareup.picasso.Picasso;
 import adapters.RecipesAdapter;
 import models.Recipe;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements RecipesAdapter.OnNoteListener {
@@ -154,16 +151,21 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
         btnPrev.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                offset -= 5;
-                actualizarRecycler(actualMod, actualInformacion, offset);
+                if(offset >= NUM_RECETAS) {
+
+                    offset -= NUM_RECETAS;
+                    actualizarRecycler(actualMod, actualInformacion, offset);
+                }
             }
         });
 
         btnNext.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                offset += 5;
-                actualizarRecycler(actualMod, actualInformacion, offset);
+                if(offset <= (NUM_RECETAS)*Integer.parseInt(txtPages.getHint().toString().split("/")[txtPages.getHint().toString().split("/").length])) {
+                    offset += NUM_RECETAS;
+                    actualizarRecycler(actualMod, actualInformacion, offset);
+                }
             }
         });
 
@@ -210,7 +212,8 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
                     actualInformacion.substring(0, actualInformacion.lastIndexOf(','));
                 }
                 offset = 0;
-                actualizarRecycler(actualMod, actualInformacion, offset);
+                    actualizarRecycler(actualMod, actualInformacion, offset);
+
                 //  https://api.spoonacular.com/recipes/complexSearch?query=pasta
 
             }
@@ -226,21 +229,18 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
         rvRecipes.removeAllViews();
         ArrayList<Recipe> recipes = null;
         try {
-            recipes = Recipe.createRecipesList(NUM_RECETAS, mode, offset, information, this);
+            recipes = Recipe.createRecipesList(NUM_RECETAS, mode, offset, information, findViewById(R.id.txtPagesSel));
+            recipesAdapter = new RecipesAdapter(recipes, this);
+            // Attach the adapter to the recyclerview to populate items
+            rvRecipes.setAdapter(recipesAdapter);
+            // Set layout manager to position the items
+            layoutManager = new LinearLayoutManager(this);
+            rvRecipes.setLayoutManager(layoutManager);
         } catch (Exception  e) {
-            Toast myToast = Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_LONG);
+            Toast myToast = Toast.makeText(this, "No se han encontrado resultados", Toast.LENGTH_LONG);
             myToast.show();
             e.printStackTrace();
         }
-        
-        // Create adapter passing in the sample user data
-        recipesAdapter = new RecipesAdapter(recipes, this);
-        // Attach the adapter to the recyclerview to populate items
-        rvRecipes.setAdapter(recipesAdapter);
-        // Set layout manager to position the items
-        layoutManager = new LinearLayoutManager(this);
-        rvRecipes.setLayoutManager(layoutManager);
-        // That's all!
     }
 
     @Override
