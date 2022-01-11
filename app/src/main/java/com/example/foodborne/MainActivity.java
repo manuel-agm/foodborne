@@ -1,11 +1,18 @@
 package com.example.foodborne;
 
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -13,14 +20,21 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import com.squareup.picasso.Picasso;
 
 import adapters.RecipesAdapter;
 import models.Recipe;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Activity implements RecipesAdapter.OnNoteListener {
+public class MainActivity extends AppCompatActivity implements RecipesAdapter.OnNoteListener {
 
     private EditText txtSearch;
     private EditText txtPages;
@@ -35,7 +49,13 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
     private CheckBox checkGluten;
     private CheckBox checkLactosa;
 
-    private final int NUM_RECETAS = 5;
+    private TextView headerplanner;
+    private TextView subHeaderPlanner;
+    private TextView startPlanning;
+    private ImageView sushiIcon;
+    private Button startPlanner;
+
+    private final int NUM_RECETAS = 4;
 
     private int offset = 0; //Numero de items cargados
 
@@ -48,31 +68,76 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
     private int paginaActual = 1;
     private int paginasTotales = 1;
 
+    @SuppressLint("ResourceType")
+    private void initWidgets() {
+        headerplanner = findViewById(R.id.headerplanner);
+        headerplanner.setTextSize(30);
+        headerplanner.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        subHeaderPlanner = findViewById(R.id.subheaderplanner);
+        subHeaderPlanner.setTextSize(20);
+        subHeaderPlanner.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        startPlanning = findViewById(R.id.startplanning);
+        startPlanning.setTextSize(15);
+        startPlanning.setTypeface(ResourcesCompat.getFont(this,R.font.lato_bold));
+
+        sushiIcon = findViewById(R.id.sushiIcon);
+        String uri = "@drawable/headerplanner";
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+        sushiIcon.setImageResource(imageResource);
+
+        txtSearch = (EditText) findViewById(R.id.txtSearch);
+        txtSearch.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        btnSearch = (Button) findViewById(R.id.btnSearch);
+        btnSearch.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        btnPrev = (Button) findViewById(R.id.btnPre);
+        btnPrev.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        btnNext = (Button) findViewById(R.id.btnNext);
+        btnNext.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        btnGo = (Button) findViewById(R.id.btnGo);
+        btnGo.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        txtPages = (EditText) findViewById(R.id.txtPages);
+        txtPages.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        checkVegetariano = (CheckBox) findViewById(R.id.checkVegetariano);
+        checkVegetariano.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        checkVegano = (CheckBox) findViewById(R.id.checkVegano);
+        checkVegano.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        checkGluten = (CheckBox) findViewById(R.id.checkGluten);
+        checkGluten.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        checkLactosa = (CheckBox) findViewById(R.id.checkLactosa);
+        checkLactosa.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         StrictMode.enableDefaults();
 
-        txtSearch = (EditText) findViewById(R.id.txtSearch);
-        btnSearch = (Button) findViewById(R.id.btnSearch);
+        initWidgets();
 
-        btnPrev = (Button) findViewById(R.id.btnPre);
-        btnNext = (Button) findViewById(R.id.btnNext);
-        btnGo = (Button) findViewById(R.id.btnGo);
-        txtPages = (EditText) findViewById(R.id.txtPages);
-
-
-        checkVegetariano = (CheckBox) findViewById(R.id.checkVegetariano);
-        checkVegano = (CheckBox) findViewById(R.id.checkVegano);
-        checkGluten = (CheckBox) findViewById(R.id.checkGluten);
-        checkLactosa = (CheckBox) findViewById(R.id.checkLactosa);
+        startPlanner = findViewById(R.id.startplanning);
+        startPlanner.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PlannerActivity.class);
+                startActivity(intent);
+            }
+        });
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-
         recyclerView = (RecyclerView) findViewById(R.id.recicler);
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             @Override
@@ -116,7 +181,6 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
             }
         });
 
-
         checkVegetariano.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,9 +211,6 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
 
                     actualInformacion.substring(0, actualInformacion.lastIndexOf(','));
                 }
-
-                Toast myToast = Toast.makeText( v.getContext(), "https://api.spoonacular.com/recipes/complexSearch?" + actualInformacion, Toast.LENGTH_SHORT);
-                myToast.show();
                 offset = 0;
                     actualizarRecycler(actualMod, actualInformacion, offset);
 
@@ -157,7 +218,6 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
 
             }
         });
-
         actualizarRecycler(-1, "", 0);
     }
 
