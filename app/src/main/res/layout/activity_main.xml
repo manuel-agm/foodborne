@@ -42,6 +42,7 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/white"
                     android:textSize="30sp"></TextView>
+
                 <TextView
                     android:id="@+id/subheaderplanner"
                     android:layout_marginTop="10dp"
@@ -54,8 +55,6 @@
                     android:textSize="20sp"
                     android:layout_height="wrap_content">
                 </TextView>
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,7 +78,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="78dp"
                         app:srcCompat="@drawable/headerplanner"></ImageView>
-
 
                 </LinearLayout>
 
@@ -140,7 +138,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-
                 android:orientation="horizontal">
 
                 <CheckBox
@@ -174,6 +171,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
                     android:text="@string/nolactose" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -184,6 +182,7 @@
             android:layout_marginHorizontal="15dp"
             android:background="@android:color/darker_gray"
             android:layout_height="1dp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -195,7 +194,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:background="@color/white"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
@@ -223,7 +221,6 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -238,11 +235,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="500dp"
                 tools:itemCount="50"
-
                 tools:listitem="@layout/recycler_view_item">
 
             </androidx.recyclerview.widget.RecyclerView>
-
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -275,10 +270,9 @@
                     android:fontFamily="@font/lato_bold"
                     android:text="Go"
                     android:textColor="@color/white" />
+
             </LinearLayout>
 
-
     </LinearLayout>
-
 
 </ScrollView>

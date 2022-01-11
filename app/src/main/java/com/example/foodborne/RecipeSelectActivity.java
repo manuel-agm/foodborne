@@ -1,6 +1,5 @@
 package com.example.foodborne;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -10,14 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import adapters.RecipesAdapter;
-import database.SQLiteHelper;
+
 import models.Recipe;
 
 import java.util.ArrayList;
@@ -96,7 +94,6 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
                 @Override
                 public void onClick(View v) {
                     if(offset >= NUM_RECETAS) {
-
                         offset -= NUM_RECETAS;
                         actualizarRecycler(actualMod, actualInformacion, offset);
                     }
@@ -158,18 +155,11 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
                     }
                     offset = 0;
                     actualizarRecycler(actualMod, actualInformacion, offset);
-
-                    //  https://api.spoonacular.com/recipes/complexSearch?query=pasta
-
                 }
             });
-
             actualizarRecycler(-1, "", 0);
         }
 
-        // mode
-        // Search Recipe by Name and Filter: 0
-        // Random:                           default
         private void actualizarRecycler(int mode, String information, int offset){
             RecyclerView rvRecipes = (RecyclerView) findViewById(R.id.reciclerSel);
             rvRecipes.removeAllViews();
@@ -177,9 +167,7 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
             try {
                 recipes = Recipe.createRecipesList(NUM_RECETAS, mode, offset, information, findViewById(R.id.txtPagesSel));
                 recipesAdapter = new RecipesAdapter(recipes, this);
-                // Attach the adapter to the recyclerview to populate items
                 rvRecipes.setAdapter(recipesAdapter);
-                // Set layout manager to position the items
                 layoutManager = new LinearLayoutManager(this);
                 rvRecipes.setLayoutManager(layoutManager);
             } catch (Exception  e) {

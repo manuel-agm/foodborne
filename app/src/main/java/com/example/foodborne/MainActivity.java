@@ -52,55 +52,7 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
     private int paginaActual = 1;
     private int paginasTotales = 1;
 
-    @SuppressLint("ResourceType")
-    private void initWidgets() {
-        headerplanner = findViewById(R.id.headerplanner);
-        headerplanner.setTextSize(30);
-        headerplanner.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
 
-        subHeaderPlanner = findViewById(R.id.subheaderplanner);
-        subHeaderPlanner.setTextSize(20);
-        subHeaderPlanner.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
-
-        startPlanning = findViewById(R.id.startplanning);
-        startPlanning.setTextSize(15);
-        startPlanning.setTypeface(ResourcesCompat.getFont(this,R.font.lato_bold));
-
-        sushiIcon = findViewById(R.id.sushiIcon);
-        String uri = "@drawable/headerplanner";
-        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-        sushiIcon.setImageResource(imageResource);
-
-        txtSearch = (EditText) findViewById(R.id.txtSearch);
-        txtSearch.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
-
-        btnSearch = (Button) findViewById(R.id.btnSearch);
-        btnSearch.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
-
-        btnPrev = (Button) findViewById(R.id.btnPre);
-        btnPrev.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
-
-        btnNext = (Button) findViewById(R.id.btnNext);
-        btnNext.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
-
-        btnGo = (Button) findViewById(R.id.btnGo);
-        btnGo.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
-
-        txtPages = (EditText) findViewById(R.id.txtPages);
-        txtPages.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
-
-        checkVegetariano = (CheckBox) findViewById(R.id.checkVegetariano);
-        checkVegetariano.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
-
-        checkVegano = (CheckBox) findViewById(R.id.checkVegano);
-        checkVegano.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
-
-        checkGluten = (CheckBox) findViewById(R.id.checkGluten);
-        checkGluten.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
-
-        checkLactosa = (CheckBox) findViewById(R.id.checkLactosa);
-        checkLactosa.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,12 +144,59 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
                 }
                 offset = 0;
                     actualizarRecycler(actualMod, actualInformacion, offset);
-
-                //  https://api.spoonacular.com/recipes/complexSearch?query=pasta
-
             }
         });
         actualizarRecycler(-1, "", 0);
+    }
+
+    @SuppressLint("ResourceType")
+    private void initWidgets() {
+        headerplanner = findViewById(R.id.headerplanner);
+        headerplanner.setTextSize(30);
+        headerplanner.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        subHeaderPlanner = findViewById(R.id.subheaderplanner);
+        subHeaderPlanner.setTextSize(20);
+        subHeaderPlanner.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        startPlanning = findViewById(R.id.startplanning);
+        startPlanning.setTextSize(15);
+        startPlanning.setTypeface(ResourcesCompat.getFont(this,R.font.lato_bold));
+
+        sushiIcon = findViewById(R.id.sushiIcon);
+        String uri = "@drawable/headerplanner";
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+        sushiIcon.setImageResource(imageResource);
+
+        txtSearch = (EditText) findViewById(R.id.txtSearch);
+        txtSearch.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        btnSearch = (Button) findViewById(R.id.btnSearch);
+        btnSearch.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        btnPrev = (Button) findViewById(R.id.btnPre);
+        btnPrev.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        btnNext = (Button) findViewById(R.id.btnNext);
+        btnNext.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        btnGo = (Button) findViewById(R.id.btnGo);
+        btnGo.setTypeface(ResourcesCompat.getFont(this,R.font.lato_black));
+
+        txtPages = (EditText) findViewById(R.id.txtPages);
+        txtPages.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        checkVegetariano = (CheckBox) findViewById(R.id.checkVegetariano);
+        checkVegetariano.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        checkVegano = (CheckBox) findViewById(R.id.checkVegano);
+        checkVegano.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        checkGluten = (CheckBox) findViewById(R.id.checkGluten);
+        checkGluten.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        checkLactosa = (CheckBox) findViewById(R.id.checkLactosa);
+        checkLactosa.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
     }
 
     private void actualizarRecycler(int mode, String information, int offset){

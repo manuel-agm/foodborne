@@ -1,18 +1,9 @@
 package models;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import com.example.foodborne.MainActivity;
 import com.example.foodborne.R;
 
 import org.json.JSONArray;
