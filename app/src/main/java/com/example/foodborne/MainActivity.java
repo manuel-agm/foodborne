@@ -107,12 +107,17 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
         btnGo.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((txtPages.getText() == null || txtPages.getText().toString() == "" || Integer.parseInt(txtPages.getHint().toString().split("/")[1]) < Integer.parseInt(txtPages.getText().toString()))){
+                try {
+                    if((txtPages.getText() == null || txtPages.getText().toString() == "" || Integer.parseInt(txtPages.getHint().toString().split("/")[1]) < Integer.parseInt(txtPages.getText().toString()))){
+                        Toast.makeText(v.getContext(), getString(R.string.validpagenumber), Toast.LENGTH_SHORT).show();
+                    } else {
+                        offset = Integer.parseInt(txtPages.getText().toString()) * NUM_RECETAS;
+                        actualizarRecycler(actualMod, actualInformacion, offset);
+                    }
+                } catch (NumberFormatException e) {
                     Toast.makeText(v.getContext(), getString(R.string.validpagenumber), Toast.LENGTH_SHORT).show();
-                } else {
-                    offset = Integer.parseInt(txtPages.getText().toString()) * NUM_RECETAS;
-                    actualizarRecycler(actualMod, actualInformacion, offset);
                 }
+
             }
         });
 
@@ -213,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
         rvRecipes.removeAllViews();
         ArrayList<Recipe> recipes = null;
         try {
-            recipes = Recipe.createRecipesList(NUM_RECETAS, mode, offset, information, findViewById(R.id.txtPagesSel));
+            recipes = Recipe.createRecipesList(NUM_RECETAS, mode, offset, information, findViewById(R.id.txtPages));
             recipesAdapter = new RecipesAdapter(recipes, this);
             rvRecipes.setAdapter(recipesAdapter);
             layoutManager = new LinearLayoutManager(this);
