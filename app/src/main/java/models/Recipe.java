@@ -33,7 +33,7 @@ public class Recipe {
     private String title;
     private String image;
 
-    private static final String API_KEY = "65757ee1a05f42769b1ec419f5a10cb2";
+    private static final String API_KEY = "b8efe4ac504b4e66a294db52cbb7c152";
     private static final int MODE_SEARCH = 0;
 
     private static String respuesta = "";

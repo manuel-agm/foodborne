@@ -33,4 +33,5 @@
     <string name="headerplanner">¿No sabes qué comer?</string>
     <string name="subheaderplanner">Planificar tus comidas nunca ha sido tan fácil</string>
     <string name="startplanning">Empieza ya</string>
+    <string name="goback">VOLVER</string>
 </resources>

@@ -20,7 +20,7 @@
     <string name="menuplanner">Menu Planner</string>
     <string name="success">Meal added successfully</string>
     <string name="failed">Error</string>
-    <string name="previous">Previous</string>
+    <string name="previous"> Previous </string>
     <string name="next">Next</string>
     <string name="page11">Page 1/1</string>
     <string name="hint">Search recipe...</string>
@@ -29,6 +29,7 @@
     <string name="vegan">Vegan</string>
     <string name="glutenfree">Gluten Free</string>
     <string name="nolactose">No Lactose</string>
+    <string name="goback">GO BACK</string>
 
     <string name="headerplanner">Don\'t know what to eat?</string>
     <string name="subheaderplanner">Planning your meals is now easier than ever</string>

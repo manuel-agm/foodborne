@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
@@ -22,7 +25,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
-    final static String API_KEY = "9fe1d7086ba94d9c887a4cf647acf753";
+    final static String API_KEY = "b8efe4ac504b4e66a294db52cbb7c152";
     TextView instructionsText;
     String respuesta;
     ImageView isVegan;
@@ -35,6 +38,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     TextView carbs;
     TextView fat;
     TextView ingredients;
+    Button goBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,14 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         protein = findViewById(R.id.protein);
         fat = findViewById(R.id.fat);
         ingredients = findViewById(R.id.ingredientsInformation);
+        goBack = findViewById(R.id.goback);
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecipeDetailsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getRecipeDetails(int recipeID) {
@@ -97,7 +109,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                             timeNeeded.setText(json.getInt("readyInMinutes") + " " + getString(R.string.minutes));
                             servings.setText(json.getInt("servings") + " " + getString(R.string.servings));
                             String instructions = json.getString("instructions");
-                            if (instructions.equals("null")) {
+                            if (instructions.equals("null") || instructions == null) {
                                 instructionsText.setText(getString(R.string.none));
                             } else {
                                 instructionsText.setText(instructions);

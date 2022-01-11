@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -33,8 +34,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-public class PlannerActivity extends AppCompatActivity {
-    final static String API_KEY = "9fe1d7086ba94d9c887a4cf647acf753";
+public class PlannerActivity extends AppCompatActivity{
+    final static String API_KEY = "b8efe4ac504b4e66a294db52cbb7c152";
     ArrayList<String> meals;
     ListView mealsView;
     CalendarView calendar;

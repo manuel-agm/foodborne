@@ -12,13 +12,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/mainCard"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="18dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginVertical="50dp"
+            android:layout_marginVertical="40dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -148,7 +149,7 @@
             app:layout_constraintTop_toBottomOf="@+id/mainCard">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
                 android:orientation="vertical">
@@ -165,9 +166,9 @@
 
                 <TextView
                     android:id="@+id/nutritionTitle"
-                    android:layout_width="371dp"
-                    android:layout_height="52dp"
-                    android:layout_marginStart="80dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
                     android:layout_marginTop="-44dp"
                     android:fontFamily="@font/lato_black"
                     android:text="@string/macronutrients"
@@ -217,7 +218,6 @@
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/fat"
                         android:textSize="20sp"
-                        android:text="holaaaa"
                         android:fontFamily="@font/lato"
                         android:textStyle="bold">
                     </TextView>
@@ -241,7 +241,6 @@
                     android:fontFamily="@font/lato"
                     android:textColor="@color/carbs"
                     android:textSize="20sp"
-                    android:text="holaaaa"
                     android:textStyle="bold">
                 </TextView>
             </LinearLayout>
@@ -268,7 +267,6 @@
                     android:textColor="@color/protein"
                     android:fontFamily="@font/lato"
                     android:textSize="20sp"
-                    android:text="holaaaa"
                     android:textStyle="bold">
                 </TextView>
 
@@ -292,7 +290,7 @@
             app:layout_constraintTop_toBottomOf="@+id/mainCard">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
                 android:orientation="vertical">
@@ -309,10 +307,10 @@
 
                 <TextView
                     android:id="@+id/ingredientsTitle"
-                    android:layout_width="371dp"
+                    android:layout_width="match_parent"
                     android:layout_height="52dp"
-                    android:layout_marginStart="106dp"
                     android:layout_marginTop="-44dp"
+                    android:textAlignment="center"
                     android:fontFamily="@font/lato_black"
                     android:text="@string/ingredients"
                     android:textColor="@color/white"
@@ -369,7 +367,7 @@
             app:layout_constraintTop_toBottomOf="@+id/mainCard">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
                 android:orientation="vertical">
@@ -385,9 +383,9 @@
 
                 <TextView
                     android:id="@+id/instructionsTitle"
-                    android:layout_width="371dp"
+                    android:layout_width="match_parent"
                     android:layout_height="52dp"
-                    android:layout_marginStart="110dp"
+                    android:textAlignment="center"
                     android:layout_marginTop="-44dp"
                     android:fontFamily="@font/lato_black"
                     android:text="@string/instructions"
@@ -425,6 +423,18 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/goback"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/goback"
+            android:backgroundTint="@color/verde_foodborne"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 
 </ScrollView>

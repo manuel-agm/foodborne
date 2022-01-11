@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
 
@@ -36,7 +37,7 @@ import models.Recipe;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MainActivity extends Activity implements RecipesAdapter.OnNoteListener {
+public class MainActivity extends AppCompatActivity implements RecipesAdapter.OnNoteListener {
 
     private EditText txtSearch;
     private EditText txtPages;
@@ -118,6 +119,7 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
 
         checkLactosa = (CheckBox) findViewById(R.id.checkLactosa);
         checkLactosa.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
     }
 
     @Override
@@ -137,13 +139,8 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
             }
         });
 
-
-
-
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-
         recyclerView = (RecyclerView) findViewById(R.id.recicler);
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             @Override
@@ -182,7 +179,6 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
             }
         });
 
-
         checkVegetariano.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,7 +215,6 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
 
             }
         });
-
         actualizarRecycler(-1, "", 0);
     }
 
