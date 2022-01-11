@@ -15,14 +15,17 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+//CLASE PARA GESTIONAR LLAMADAS A LA API
 public class APIUtils {
+    //ALGUNAS CLAVES PARA CONSUMIR LA API
     //final static String API_KEY = "9fe1d7086ba94d9c887a4cf647acf753"; // GOMEZ
-    //final static String API_KEY = "01e611e7d4954ce39cd97fb5312e23cd"; // ROLDAN 2
-    public final static String API_KEY = "a75a4d3064254a4ea532d178459e4b0e";
+    //final static String API_KEY = "01e611e7d4954ce39cd97fb5312e23cd"; // ROLDAN
+    public final static String API_KEY = "f818642c1f3a46dd847c3abe4f8584ae";
 
     private static String name = "";
     private static ArrayList<Recipe> recipesPlanner = new ArrayList<Recipe>();
 
+    //OBTENER ELN NOMBRE DE UNA RECETA DADA SU ID
     public static String getRecipeNameById(int id, CountDownLatch cdl) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -62,6 +65,7 @@ public class APIUtils {
         return name;
     }
 
+    //RECIBIR TODAS LAS RECETAS DE UN DÍA
     public static ArrayList<Recipe> getRecipesBulk(String[] planning, CountDownLatch cdl) {
         OkHttpClient client = new OkHttpClient();
         ArrayList<Integer> nulls = new ArrayList<Integer>();

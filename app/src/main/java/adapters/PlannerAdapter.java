@@ -22,6 +22,7 @@ import models.Recipe;
 import java.io.IOException;
 import java.util.List;
 
+//ADAPTADOR PARA EL PLANIFICADOR
 public class PlannerAdapter extends
         RecyclerView.Adapter<PlannerAdapter.ViewHolder> {
 

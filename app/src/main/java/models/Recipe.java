@@ -50,6 +50,7 @@ public class Recipe {
 
     private static int lastContactId = 0;
 
+    //CREA UNA LISTA DE RECETAS
     public static ArrayList<Recipe> createRecipesList(int numRecipes, int mode, int offset, String information, EditText txtPages) throws JSONException, InterruptedException, IOException {
         ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 
@@ -98,6 +99,7 @@ public class Recipe {
         return recipes;
     }
 
+    //OBTIENE RECETAS
     private static void getRecipes(int numRecipes, String information, int mode, int offset, CountDownLatch countDownLatch){
         String modeString;
         switch (mode) {

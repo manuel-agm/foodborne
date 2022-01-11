@@ -15,6 +15,7 @@ import com.example.foodborne.R;
 
 import java.util.Date;
 
+//GESTOR DE BASE DE DATOS
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     private Context context;
@@ -38,6 +39,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
+    //ESTA BASE DE DATOS SÓLO CONTIENE UNA TABLA DAY, QUE GUARDA LAS COMIDAS PLANIFICADAS PARA ESE DÍA
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
@@ -62,6 +64,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    //OBTIENE LAS COMIDAS DE UN DÍA DEL AÑO CONCRETO
     public String[] getMeals(String date) {
         String[] res = null;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -75,6 +78,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    //INSERTA UNA RECETA EN UNA DE LAS CUATRO COMIDAS DE UN DÍA
     public void insertRecipeIntoDay(int recipeID, int meal, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         SQLiteDatabase dbSel = this.getReadableDatabase();
@@ -115,6 +119,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         dbSel.close();
     }
 
+    //BORRA UNA RECETA ASIGNADA A UN DÍA
     public void deleteRecipeFromDay(int meal, String date) {
         int nulls = 0;
         SQLiteDatabase db = this.getWritableDatabase();

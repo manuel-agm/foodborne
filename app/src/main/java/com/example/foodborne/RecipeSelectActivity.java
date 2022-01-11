@@ -50,13 +50,9 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
         private String date;
         private int meal;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_recipe_select);
 
-            StrictMode.enableDefaults();
-
+        //INICIALIZA LOS WIDGETS
+        private void initWidgets() {
             txtSearch = (EditText) findViewById(R.id.txtSearchSel);
             btnSearch = (Button) findViewById(R.id.btnSearchSel);
 
@@ -73,6 +69,15 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
             swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
 
             recyclerView = (RecyclerView) findViewById(R.id.reciclerSel);
+        }
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_recipe_select);
+
+            StrictMode.enableDefaults();
+
+            initWidgets();
 
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
@@ -160,6 +165,7 @@ public class RecipeSelectActivity extends Activity implements RecipesAdapter.OnN
             actualizarRecycler(-1, "", 0);
         }
 
+        //ACTUALIZA LA LISTA DE RECETAS
         private void actualizarRecycler(int mode, String information, int offset){
             RecyclerView rvRecipes = (RecyclerView) findViewById(R.id.reciclerSel);
             rvRecipes.removeAllViews();

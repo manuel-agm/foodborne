@@ -59,7 +59,11 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         StrictMode.enableDefaults();
+
+        //INICIALIZAMOS LOS WIDGETS
         initWidgets();
+
+        //LANZAMOS EL INTENT PARA IR AL PLANIFICADOR
         startPlanner = findViewById(R.id.startplanning);
         startPlanner.setOnClickListener(new OnClickListener() {
             @Override
@@ -68,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
                 startActivity(intent);
             }
         });
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-        recyclerView = (RecyclerView) findViewById(R.id.recicler);
+
+        //REFRESCAMOS LA LISTA DE RECETAS
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -149,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
         actualizarRecycler(-1, "", 0);
     }
 
+    //INICIALIZAMOS LOS WIDGETS
     @SuppressLint("ResourceType")
     private void initWidgets() {
         headerplanner = findViewById(R.id.headerplanner);
@@ -197,8 +202,12 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.On
 
         checkLactosa = (CheckBox) findViewById(R.id.checkLactosa);
         checkLactosa.setTypeface(ResourcesCompat.getFont(this,R.font.lato));
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        recyclerView = (RecyclerView) findViewById(R.id.recicler);
     }
 
+    //ACTUALIZAMOS LA LISTA DE RECETAS
     private void actualizarRecycler(int mode, String information, int offset){
         RecyclerView rvRecipes = (RecyclerView) findViewById(R.id.recicler);
         rvRecipes.removeAllViews();

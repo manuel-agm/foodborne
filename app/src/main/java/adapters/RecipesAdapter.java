@@ -18,6 +18,7 @@ import models.Recipe;
 import java.io.IOException;
 import java.util.List;
 
+//ADAPTADOR DE RECETAS
 public class RecipesAdapter extends
         RecyclerView.Adapter<RecipesAdapter.ViewHolder> {
 

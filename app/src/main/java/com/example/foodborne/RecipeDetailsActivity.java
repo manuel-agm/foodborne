@@ -49,6 +49,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         getRecipeDetails(getRecipeId());
     }
 
+    //OBTIENE LA ID DE LA ACTIVIDAD QUE CONVOCA EL INTENT
     private int getRecipeId() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -58,6 +59,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         }
     }
 
+    //INICIALIZA LOS WIDGETS
     private void initElements() {
         instructionsText = findViewById(R.id.instructionsText);
         recipeImage = findViewById(R.id.recipeImage);
@@ -79,6 +81,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         });
     }
 
+    //CONSULTA A LA API TODOS LOS DETALLES DE UNA RECETA PARA IMPRIMIRLOS EN LA ACTIVIDAD
     private void getRecipeDetails(int recipeID) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()

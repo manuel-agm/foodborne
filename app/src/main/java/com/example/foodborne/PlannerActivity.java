@@ -47,6 +47,7 @@ public class PlannerActivity extends AppCompatActivity {
         initElements();
     }
 
+    //INICIALIZAMOS
     private void initElements() {
         calendar = findViewById(R.id.calendarView);
         Date date = new Date(calendar.getDate());
@@ -80,6 +81,7 @@ public class PlannerActivity extends AppCompatActivity {
         });
     }
 
+    //ACTUALIZAMOS LA LISTA DE COMIDAS
     public void actualizarRecycler(String selected){
         RecyclerView rvPlanner = (RecyclerView) findViewById(R.id.recycler2);
         rvPlanner.removeAllViews();
