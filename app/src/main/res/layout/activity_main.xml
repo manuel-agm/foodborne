@@ -1,42 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context=".RecipeDetailsActivity">
 
     <LinearLayout
         android:id="@+id/linearMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:background="#FFFFFF"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="5dp">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="5dp">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainCard"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="@drawable/background"
-            android:gravity="bottom"
-            android:orientation="horizontal">
+            android:layout_height="200dp"
+            app:cardCornerRadius="5dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/green"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/headerplanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/lato_black"
+                    android:text="@string/headerplanner"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"></TextView>
+                <TextView
+                    android:id="@+id/subheaderplanner"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:textAlignment="textStart"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/subheaderplanner"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/startplanning"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:textColor="@color/white"
+                        android:backgroundTintMode="src_atop"
+                        android:backgroundTint="@color/verde_foodborne"
+                        android:text="@string/startplanning"
+                        android:layout_marginStart="15dp"
+                        android:layout_height="wrap_content">
+                    </Button>
+
+                    <ImageView
+                        android:id="@+id/sushiIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="78dp"
+                        app:srcCompat="@drawable/headerplanner"></ImageView>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="117dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"
             android:background="#FFFFFF"
             android:orientation="vertical">
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/black" />
 
             <View
                 android:id="@+id/view3"
@@ -63,14 +120,14 @@
 
                 <Button
                     android:id="@+id/btnSearch"
-                    android:fontFamily="@font/lato_bold"
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="69dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/verde_foodborne"
+                    android:fontFamily="@font/lato_bold"
                     android:foregroundTint="#8BC34A"
                     android:text="@string/search"
+                    android:textColor="@color/white"
                     android:textColorHighlight="#4CAF50"
                     app:rippleColor="#FFFFFF" />
 
@@ -80,14 +137,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+
                 android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkVegetariano"
-                    android:fontFamily="@font/lato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/lato"
                     android:text="@string/vegetarian" />
 
                 <CheckBox
@@ -100,26 +158,28 @@
 
                 <CheckBox
                     android:id="@+id/checkGluten"
-                    android:fontFamily="@font/lato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/lato"
                     android:text="@string/glutenfree" />
 
                 <CheckBox
                     android:id="@+id/checkLactosa"
-                    android:fontFamily="@font/lato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/lato"
                     android:text="@string/nolactose" />
             </LinearLayout>
 
         </LinearLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:background="#FFFFFF"
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
             android:layout_height="400dp">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -127,7 +187,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="515dp"
                 tools:itemCount="50"
-
                 tools:listitem="@layout/recycler_view_item">
 
             </androidx.recyclerview.widget.RecyclerView>
@@ -140,6 +199,8 @@
             android:layout_width="match_parent"
             android:layout_height="89dp"
             android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <LinearLayout
@@ -159,41 +220,41 @@
 
                 <Button
                     android:id="@+id/btnGo"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/lato_bold"
                     android:layout_width="402dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginBottom="7dp"
                     android:backgroundTint="@color/verde_foodborne"
-                    android:text="Go" />
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Go"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/background"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnPre"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/lato_bold"
                     android:backgroundTint="@color/verde_foodborne"
-                    android:text="@string/previous" />
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/previous"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/btnNext"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/lato_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/verde_foodborne"
-                    android:text="@string/next" />
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/next"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
         </LinearLayout>
@@ -201,4 +262,4 @@
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

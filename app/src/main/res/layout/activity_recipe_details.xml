@@ -56,12 +56,12 @@
                     android:id="@+id/clock"
                     android:layout_width="44dp"
                     android:layout_height="38dp"
-                    android:contentDescription="@string/desc"
                     android:layout_alignBottom="@+id/recipeTitle"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="7dp"
                     android:layout_marginBottom="-40dp"
-                    app:srcCompat="@drawable/clock"/>
+                    android:contentDescription="@string/desc"
+                    app:srcCompat="@drawable/clock" />
 
                 <TextView
                     android:id="@+id/timeNeeded"
@@ -89,14 +89,14 @@
 
                 <ImageView
                     android:id="@+id/calImage"
-                    android:contentDescription="@string/desc"
                     android:layout_width="26dp"
                     android:layout_height="33dp"
                     android:layout_below="@+id/recipeTitle"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="18dp"
                     android:layout_marginTop="79dp"
-                    app:srcCompat="@drawable/kcal"/>
+                    android:contentDescription="@string/desc"
+                    app:srcCompat="@drawable/kcal" />
 
                 <ImageView
                     android:id="@+id/isVegan"
@@ -193,49 +193,86 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/fat"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/fat"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/lato"
-                    android:textStyle="bold">
-                </TextView>
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/fatImage"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:contentDescription="@string/desc"
+                        app:srcCompat="@drawable/fat"/>
 
+                    <TextView
+                        android:id="@+id/fat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/fat"
+                        android:textSize="20sp"
+                        android:text="holaaaa"
+                        android:fontFamily="@font/lato"
+                        android:textStyle="bold">
+                    </TextView>
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/carbsImage"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/desc"
+                    app:srcCompat="@drawable/carbs"/>
                 <TextView
                     android:id="@+id/carbs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginVertical="5dp"
                     android:fontFamily="@font/lato"
-                    android:textColor="@color/protein"
+                    android:textColor="@color/carbs"
                     android:textSize="20sp"
+                    android:text="holaaaa"
                     android:textStyle="bold">
                 </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/proteinImage"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:contentDescription="@string/desc"
+                    app:srcCompat="@drawable/protein"/>
+
 
                 <TextView
                     android:id="@+id/protein"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/carbs"
+                    android:textColor="@color/protein"
                     android:fontFamily="@font/lato"
                     android:textSize="20sp"
+                    android:text="holaaaa"
                     android:textStyle="bold">
                 </TextView>
+
+            </LinearLayout>
 
             </LinearLayout>
 

@@ -30,4 +30,7 @@
     <string name="vegan">Vegano</string>
     <string name="glutenfree">Sin gluten</string>
     <string name="nolactose">Sin lactosa</string>
+    <string name="headerplanner">¿No sabes qué comer?</string>
+    <string name="subheaderplanner">Planificar tus comidas nunca ha sido tan fácil</string>
+    <string name="startplanning">Empieza ya</string>
 </resources>

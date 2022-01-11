@@ -29,4 +29,8 @@
     <string name="vegan">Vegan</string>
     <string name="glutenfree">Gluten Free</string>
     <string name="nolactose">No Lactose</string>
+
+    <string name="headerplanner">Don\'t know what to eat?</string>
+    <string name="subheaderplanner">Planning your meals is now easier than ever</string>
+    <string name="startplanning">Start planning</string>
 </resources>

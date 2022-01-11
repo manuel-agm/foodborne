@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="verde_foodborne">#12BF8C</color>
     <color name="fat">#888DFE</color>
-    <color name="carbs">#F52685</color>
-    <color name="protein">#FFAD33</color>
+    <color name="protein">#F52685</color>
+    <color name="carbs">#FFAD33</color>
+    <color name="littlebitgray">#EAEAEA</color>
 </resources>
