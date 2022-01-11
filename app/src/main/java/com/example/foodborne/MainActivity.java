@@ -1,32 +1,23 @@
 package com.example.foodborne;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.ActionBar.LayoutParams;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import adapters.RecipesAdapter;
 import models.Recipe;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity implements RecipesAdapter.OnNoteListener {
@@ -95,16 +86,21 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
         btnPrev.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                offset -= 5;
-                actualizarRecycler(actualMod, actualInformacion, offset);
+                if(offset >= NUM_RECETAS) {
+
+                    offset -= NUM_RECETAS;
+                    actualizarRecycler(actualMod, actualInformacion, offset);
+                }
             }
         });
 
         btnNext.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                offset += 5;
-                actualizarRecycler(actualMod, actualInformacion, offset);
+                if(offset <= (NUM_RECETAS)*Integer.parseInt(txtPages.getHint().toString().split("/")[txtPages.getHint().toString().split("/").length])) {
+                    offset += NUM_RECETAS;
+                    actualizarRecycler(actualMod, actualInformacion, offset);
+                }
             }
         });
 
@@ -155,7 +151,8 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
                 Toast myToast = Toast.makeText( v.getContext(), "https://api.spoonacular.com/recipes/complexSearch?" + actualInformacion, Toast.LENGTH_SHORT);
                 myToast.show();
                 offset = 0;
-                actualizarRecycler(actualMod, actualInformacion, offset);
+                    actualizarRecycler(actualMod, actualInformacion, offset);
+
                 //  https://api.spoonacular.com/recipes/complexSearch?query=pasta
 
             }
@@ -172,21 +169,18 @@ public class MainActivity extends Activity implements RecipesAdapter.OnNoteListe
         rvRecipes.removeAllViews();
         ArrayList<Recipe> recipes = null;
         try {
-            recipes = Recipe.createRecipesList(NUM_RECETAS, mode, offset, information, this);
+            recipes = Recipe.createRecipesList(NUM_RECETAS, mode, offset, information, findViewById(R.id.txtPagesSel));
+            recipesAdapter = new RecipesAdapter(recipes, this);
+            // Attach the adapter to the recyclerview to populate items
+            rvRecipes.setAdapter(recipesAdapter);
+            // Set layout manager to position the items
+            layoutManager = new LinearLayoutManager(this);
+            rvRecipes.setLayoutManager(layoutManager);
         } catch (Exception  e) {
-            Toast myToast = Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_LONG);
+            Toast myToast = Toast.makeText(this, "No se han encontrado resultados", Toast.LENGTH_LONG);
             myToast.show();
             e.printStackTrace();
         }
-        
-        // Create adapter passing in the sample user data
-        recipesAdapter = new RecipesAdapter(recipes, this);
-        // Attach the adapter to the recyclerview to populate items
-        rvRecipes.setAdapter(recipesAdapter);
-        // Set layout manager to position the items
-        layoutManager = new LinearLayoutManager(this);
-        rvRecipes.setLayoutManager(layoutManager);
-        // That's all!
     }
 
     @Override

@@ -1,5 +1,6 @@
 package models;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -33,7 +34,6 @@ public class Recipe {
     private String title;
     private String image;
 
-    private static final String API_KEY = "65757ee1a05f42769b1ec419f5a10cb2";
     private static final int MODE_SEARCH = 0;
 
     private static String respuesta = "";
@@ -59,7 +59,7 @@ public class Recipe {
 
     private static int lastContactId = 0;
 
-    public static ArrayList<Recipe> createRecipesList(int numRecipes, int mode, int offset, String information, MainActivity mainActivity) throws JSONException, InterruptedException {
+    public static ArrayList<Recipe> createRecipesList(int numRecipes, int mode, int offset, String information, EditText txtPages) throws JSONException, InterruptedException, IOException {
         ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 
 
@@ -89,8 +89,11 @@ public class Recipe {
             recipes.add(new Recipe(object.getInt("id"), object.getString("title"), object.getString("image").split("/")[object.getString("image").split("/").length-1]));
         }
 
+        if(recipes.size() == 0){
+            throw new IOException("No se han encontrado resultados");
+        }
+
         if(mode == MODE_SEARCH){
-            EditText txtPages = (EditText) mainActivity.findViewById(R.id.txtPages);
             txtPages.setHint(((int)Math.floor(offset/numRecipes)+1 + "/" + (int)Math.round(rootObj.getInt("totalResults")/numRecipes)));
         }
 
@@ -118,7 +121,7 @@ public class Recipe {
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://api.spoonacular.com/recipes/" + modeString + "?number=" + numRecipes + "&" + information + "&apiKey=" + API_KEY)
+                .url("https://api.spoonacular.com/recipes/" + modeString + "?number=" + numRecipes + "&" + information + "&apiKey=" + APIUtils.API_KEY)
                 .get()
                 .build();
 

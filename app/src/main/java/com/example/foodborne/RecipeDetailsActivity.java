@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 
+import models.APIUtils;
 import models.RecipeDetails;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -22,7 +23,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
-    final static String API_KEY = "9fe1d7086ba94d9c887a4cf647acf753";
     TextView instructionsText;
     String respuesta;
     ImageView isVegan;
@@ -70,7 +70,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private void getRecipeDetails(int recipeID) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://api.spoonacular.com/recipes/" + recipeID + "/information?apiKey=" + API_KEY + "&includeNutrition=true")
+                .url("https://api.spoonacular.com/recipes/" + recipeID + "/information?apiKey=" + APIUtils.API_KEY + "&includeNutrition=true")
                 .get()
                 .build();
         client.newCall(request).enqueue(new Callback() {
